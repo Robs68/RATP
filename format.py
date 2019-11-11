@@ -11,7 +11,7 @@ import numpy as np
 print ("Lancement du Script Formatage RATP")
 print (" ")
 
-bad_words = ['SERVI', 'INFO','DERNIER', 'PREMIER', 'COMMEN', 'arr', 'approc', 'BUS', 'PERTURBATIO', 'ARRET']
+bad_words = ['SERVI', 'INFO','DERNIER', 'PREMIER', 'COMMEN', 'arr', 'approc', 'BUS', 'PERTURBATIO', 'ARRET', 'CIRCULATION']
 
 with open('temps.csv') as oldfile, open('temps_format.csv', 'w') as newfile:
     for line in oldfile:
@@ -45,7 +45,7 @@ print " "
 
 print ('Formatage pour relation')
 print ("")
-result = df.loc[df['First'] == '0']
+#result = df.loc[df['First'] == '0']
 
 test = (df.set_index('Date').between_time('07:50:00','08:20:00').reset_index().loc[lambda x: x.First == 0].Date.dt.time.value_counts().index[0])
 
